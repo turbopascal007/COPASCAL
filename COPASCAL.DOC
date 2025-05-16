@@ -1,0 +1,103 @@
+
+                   C  o  -  P  A  S  C  A  L          v2.0
+                 _____________________________
+
+
+     CP/M & MS-DOS implementations by :  Charles Schoening
+                                         4012  Fulford St.
+                                         Olney, MD   20832
+
+
+
+  I. Notes about the Co-Pascal Compiler
+     _____________________________________
+
+
+     Co-Pascal is an extension of the Pascal-S
+     compiler (itself a subset of Pascal)
+     developed by Nikalus Wirth.  Modifications
+     to the Pascal-C compiler were suggested by
+     M. Ben-Ari in Principles of Concurrent
+     Programming and implemented on a DEC VAX by
+     Barry Burd of Drew University.  I enhanced
+     and modified the code to run under CP/M and
+     MS-DOS.  Co-Pascal is written in Pascal and
+     optimized to run under Turbo-Pascal(tm).
+
+     Co-Pascal currently provides an excellent
+     environment for experimenting with
+     concurrent programming.  It's well suited
+     for designing and testing of algorithums,
+     but it is not a full Pascal compiler and
+     does have some unfortunate restrictions.
+     For this reason, hoping that users will
+     enhance and update the compiler, and because
+     it a good chance to tinker with a compiler,
+     I am providing the Co-Pascal compiler in
+     its source code.
+
+
+
+ II. List of Known Problems and/or Limitations of Co-Pascal
+     ______________________________________________________
+
+     Some features common to other Pascal compilers are not
+     available in Co-Pascal.
+
+     Record types are not properly handled; no error or
+     warning message is issued.  This improper handling
+     of record types MAY apply only to the use of record
+     types with the functions WAIT and SIGNAL.
+
+     Standard Features NOT supported :
+
+       .  Sets, including the 'IN' operator
+       .  GOTO and label's.
+       .  Pointers
+       .  the 'INPUT' parameter is required in EOF and EOLN
+          function calls (i.e. EOF(INPUT) ).
+       .  File I/O is not yet available.  The READ/WRITE
+          procedures for data files are currently under
+          construction.
+
+     The following limit values are in effect:
+
+       .  10 characters in identifier names
+       .  200 lines of output
+       .  CP/M:   2 concurrent processes
+          MS-DOS: 4 concurrent processes
+       .  Memory limitations dictate a fixed maximum number of
+          procedures which can be executed concurrently at any
+          one time.  This number is operating system dependent.
+          - CP/M  :  Limit of 2 concurrent processes
+          - MS-DOS:  Current limit of 4 concurrent processes.
+                     Presumably, this could be increased if
+                     necessary.
+
+     Some of the above limits may be changed in the constant
+     declaration area of the source code.
+
+     There may be a limit on the number of lines in a source
+     program (I'm not sure).
+
+     Pre-declared functions :
+
+        RANDOM(I) : returns a random INTEGER X such that  0 <= X <= I
+
+
+
+III. Operating the Compiler
+     ______________________
+
+     Command line syntax is :    FNAME /X*
+
+     where FNAME is a legal file name with the .TYP optional
+     and the <X> option is one of the following :
+
+        C :: compile the source code to P-code
+        E :: execute a previously compiled P-code
+        D :: compile and then execute
+
+     * is an optional flag to display debug information
+
+
